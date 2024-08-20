@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HostLogin from './components/HostLogin';
-import HostRegistration from './components/HostRegistration';
+import HostLogin from './components/Host/HostLogin';
+import HostRegistration from './components/Host/HostRegistration';
 
 function App() {
     return (

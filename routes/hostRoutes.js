@@ -1,5 +1,5 @@
 import express from 'express';
-import Host from './Host.js'; // Adjust the path to your model
+import Host from '../models/Host.js'; // Adjust the path to your model
 
 const router = express.Router();
 
