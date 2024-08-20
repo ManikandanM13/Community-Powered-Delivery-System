@@ -1,0 +1,24 @@
+{
+  "name": "community-delivery-system",
+  "version": "1.0.0",
+  "description": "Community-powered delivery system",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "community-delivery-system": "file:",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^5.13.22",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "type": "module"
+}
