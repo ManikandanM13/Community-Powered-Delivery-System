@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import './styles.css'; // Reuse the same CSS for consistent styling
+import { useNavigate } from 'react-router-dom';
 
 const HostLogin = () => {
     const [formData, setFormData] = useState({
@@ -9,6 +10,7 @@ const HostLogin = () => {
     });
 
     const [loginError, setLoginError] = useState('');
+    const navigate = useNavigate(); // Initialize useNavigate
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -21,9 +23,12 @@ const HostLogin = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/api/hosts/login', formData);
-            console.log('Login successful:', response.data);
-            // Redirect to host dashboard or another page after successful login
+            const response = await axios.post('http://localhost:4000/api/hosts/login', formData);
+            //console.log(response.data); // Log to see the response
+            alert(response.data.message);
+            if (response.data.message === "login successful") {
+                navigate('/hosthomepage'); // Use navigate to redirect
+            }
         } catch (error) {
             setLoginError('Invalid name or password');
             console.error('Error logging in:', error);
@@ -60,7 +65,7 @@ const HostLogin = () => {
             </form>
 
             <p className="create-account-link">
-                Don't have an account? <a href="/register">Create one</a>
+                Dont have an account? <a href="/register">Create one</a>
             </p>
         </div>
     );

@@ -12,11 +12,14 @@ var _hostRoutes = _interopRequireDefault(require("./routes/hostRoutes.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+// import hostLoginRoutes from './routes/hostLoginRoutes.js';
 _dotenv["default"].config();
 
 var app = (0, _express["default"])(); // Middleware
 
-app.use((0, _cors["default"])());
+app.use((0, _cors["default"])({
+  origin: '*'
+}));
 app.use(_express["default"].json()); // MongoDB connection
 
 _mongoose["default"].connect(process.env.MONGO_URI, {

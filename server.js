@@ -3,13 +3,16 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import hostRoutes from './routes/hostRoutes.js';
+// import hostLoginRoutes from './routes/hostLoginRoutes.js';
 
 dotenv.config();
 
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin:'*'
+}));
 app.use(express.json());
 
 // MongoDB connection

@@ -30,10 +30,7 @@ var hostSchema = new _mongoose["default"].Schema({
     type: Date,
     required: true
   },
-  idProof: {
-    type: String,
-    required: true
-  },
+  //idProof: { type: String, required: true },
   password: {
     type: String,
     required: true

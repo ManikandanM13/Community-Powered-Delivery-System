@@ -7,7 +7,7 @@ const hostSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     address: { type: String, required: true },
     dob: { type: Date, required: true },
-    idProof: { type: String, required: true },
+    //idProof: { type: String, required: true },
     password: { type: String, required: true },
 });
 
