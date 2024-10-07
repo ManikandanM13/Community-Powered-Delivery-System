@@ -2,6 +2,8 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import HostLogin from "./components/Host/HostLogin";
 import HostRegistration from "./components/Host/HostRegistration";
 import HostHomePage from "./components/Host/HostHomePage";
+import DPRegistration from "./components/DeliveryPersonnel/DPRegistration";
+import DPHomePage from "./components/DeliveryPersonnel/DPHomePage";
 
 function App() {
     return (
@@ -9,6 +11,8 @@ function App() {
             <Route path="/login" element={<HostLogin />} />
             <Route path="/register" element={<HostRegistration />} />
             <Route path="/home" element={<HostHomePage />} />
+            <Route path="/dp-registration" element={<DPRegistration />} />
+            <Route path="/dp-home" element={<DPHomePage />} />
             <Route path="*" element={<Navigate to="/register" />} />
         </Routes>
     );
