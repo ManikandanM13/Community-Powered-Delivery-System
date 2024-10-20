@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import './DPHomePage.css'; // Ensure you create this CSS file for styling
+import axios from 'axios';
+import './DPHomePage.css';
 
 const DPHomePage = () => {
     const [journey, setJourney] = useState({
         start: '',
         destination: ''
     });
+
+    const [matchingDeliveries, setMatchingDeliveries] = useState([]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -15,11 +18,17 @@ const DPHomePage = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle journey submission logic here, e.g., save to backend
-        console.log('Journey Details:', journey);
-        alert('Journey submitted successfully');
+
+        try {
+            const response = await axios.post('http://localhost:4000/api/matching-deliveries', journey);
+            setMatchingDeliveries(response.data.matchingDeliveries);
+            alert('Journey submitted successfully');
+        } catch (error) {
+            console.error('Error fetching matching deliveries:', error);
+            alert('Failed to fetch matching deliveries');
+        }
     };
 
     return (
@@ -48,6 +57,13 @@ const DPHomePage = () => {
 
                 <button type="submit">Submit Journey</button>
             </form>
+
+            <h3>Matching Deliveries</h3>
+            <ul>
+                {matchingDeliveries.map(delivery => (
+                    <li key={delivery._id}>{`Pickup: ${delivery.pickup}, Dropoff: ${delivery.dropoff}`}</li>
+                ))}
+            </ul>
         </div>
     );
 };

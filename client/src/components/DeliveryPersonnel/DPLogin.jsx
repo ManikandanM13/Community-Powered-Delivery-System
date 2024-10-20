@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Box, Button, Paper, TextField } from "@mui/material";
 import styles from "./authPageStyles.module.css"; // Reuse the same CSS for consistent styling
 
-const HostLogin = () => {
+const DPLogin = () => {
   const [formData, setFormData] = useState({
     name: "",
     password: "",
@@ -34,10 +34,10 @@ const HostLogin = () => {
       );
 
       if (response.status === 200) {
-        // Navigate to homepage if not
-        const user = response.data.host;
-        sessionStorage.setItem("userInfo", JSON.stringify(user));
-        navigate("/home");
+        // Navigate to DP homepage after successful login
+        const dp = response.data.dp;
+        sessionStorage.setItem("dpInfo", JSON.stringify(dp));
+        navigate("/dp-home");
       }
     } catch (e) {
       setLoginError("Invalid name or password");
@@ -46,14 +46,14 @@ const HostLogin = () => {
   };
 
   useEffect(() => {
-    const userInfo = sessionStorage.getItem("userInfo");
-    if (userInfo) navigate("/home");
-  }, []);
+    const dpInfo = sessionStorage.getItem("dpInfo");
+    if (dpInfo) navigate("/dp-home");
+  }, [navigate]);
 
   return (
     <Box className={styles.login_page_container}>
       <Paper elevation={6} className={styles.login_card}>
-        <h2>Host Login</h2>
+        <h2>DP Login</h2>
 
         <Box className={styles.login_fields_box}>
           <TextField
@@ -78,11 +78,11 @@ const HostLogin = () => {
         </Box>
 
         <p className="create-account-link">
-          Don&apos;t have an account? <a href="/register">Create one</a>
+          Don&apos;t have an account? <a href="/dp-register">Register here</a>
         </p>
       </Paper>
     </Box>
   );
 };
 
-export default HostLogin;
+export default DPLogin;
