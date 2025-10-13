@@ -1,0 +1,50 @@
+.orders-posted {
+    padding: 20px; /* Space around content */
+    background-color: #f9f9f9; /* Background color for the page */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.loading {
+    text-align: center; /* Center align loading text */
+    font-size: 20px; /* Larger font for loading text */
+    color: #6d5f8e; /* Use your theme color */
+}
+
+.error {
+    text-align: center; /* Center align error message */
+    color: red; /* Error text color */
+    font-size: 18px; /* Font size for error text */
+}
+
+.order-list {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+}
+
+.order-item {
+    background-color: #ffffff; /* White background for each order */
+    border: 1px solid #ddd; /* Border for order items */
+    border-radius: 8px; /* Rounded corners for order items */
+    padding: 15px; /* Space within each order item */
+    margin-bottom: 10px; /* Space between order items */
+}
+
+h1 {
+    text-align: center; /* Center align the title */
+    color: #333; /* Title color */
+}
+
+.delete-button {
+    background-color: #6d5f8e; /* Red background for delete button */
+    color: white; /* White text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding inside button */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s; /* Smooth background color change */
+}
+
+.delete-button:hover {
+    background-color: #ff1a1a; /* Darker red on hover */
+}
+

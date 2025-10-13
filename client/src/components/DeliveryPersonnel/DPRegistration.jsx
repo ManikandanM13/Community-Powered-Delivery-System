@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./DPRegistration.css"; // External CSS file for styling
 
 const DPRegistration = () => {
   const [formData, setFormData] = useState({
+    dpName: "", // Added dpName field
+    password: "", // Added password field
     dlNumber: "",
     rcNumber: "",
     dlProof: "", // Local state for DL Proof (not sent to the server)
@@ -12,6 +14,17 @@ const DPRegistration = () => {
   });
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const userInfo = sessionStorage.getItem("userInfo");
+    if (userInfo) {
+      const parsedInfo = JSON.parse(userInfo);
+      setFormData((prevData) => ({
+        ...prevData,
+        dpName: parsedInfo.name, // Autofill DP Name from userInfo
+      }));
+    }
+  }, []);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -35,6 +48,8 @@ const DPRegistration = () => {
       const response = await axios.post(
         "http://localhost:4000/auth/dpregister",
         {
+          dpName: formData.dpName, // Sending dpName to the server
+          password: formData.password, // Sending password to the server
           DLNumber: formData.dlNumber,
           RCNumber: formData.rcNumber,
         },
@@ -48,7 +63,7 @@ const DPRegistration = () => {
 
       alert(response.data.message);
       if (response.data.message === "DP Registration successful") {
-        navigate("/dp-home"); // Navigate to DP HomePage after successful registration
+        navigate("/dp-login"); // Navigate to DP HomePage after successful registration
       }
     } catch (error) {
       alert("Error registering Delivery Personnel");
@@ -61,6 +76,31 @@ const DPRegistration = () => {
       <div className="dp-registration-form">
         <h2>DP Registration</h2>
         <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="dpName">DP Name:</label> {/* New dpName field */}
+            <input
+              type="text"
+              id="dpName"
+              name="dpName"
+              value={formData.dpName}
+              onChange={handleChange}
+              required
+              readOnly // Make DP Name field read-only
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password">Password:</label> {/* New password field */}
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
           <div className="form-group">
             <label htmlFor="dlNumber">DL Number:</label>
             <input

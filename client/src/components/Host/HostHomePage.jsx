@@ -18,12 +18,18 @@ const HostHomePage = () => {
 
     const logout = () => {
         sessionStorage.removeItem('userInfo');
+        sessionStorage.removeItem('dpInfo');
         navigate('/login');
     }
 
     useEffect(() => {
         const userInfo = sessionStorage.getItem('userInfo');
         if (!userInfo) navigate('/login');
+        else {
+            const { name, email } = JSON.parse(userInfo);
+            setHostName(name); // Set hostName to the user's name
+            setContactNumber(email); // Optionally set the contact number to email or store separately
+        }
     }, [navigate]);
 
     const handleSubmit = async (e) => {
@@ -53,12 +59,33 @@ const HostHomePage = () => {
     return (
         <div className="host-homepage">
             <div className="sidebar">
-                <ul>
-                    <li><button onClick={() => navigate('/dp-registration')}>DP Reg/Login</button></li>
-                    <li><button onClick={() => navigate('#orders-posted')}>Orders Posted</button></li>
-                    <li><button onClick={() => navigate('#orders-completed')}>Orders Completed</button></li>
-                    <li><button onClick={logout}>Logout</button></li>
-                </ul>
+                {/* User Info Card */}
+                <div style={{
+                    background: 'linear-gradient(135deg, #6d5f8e, #a9a8f2)',
+                    color: '#fff',
+                    padding: '10px',
+                    borderRadius: '8px',
+                    marginBottom: '20px',
+                    textAlign: 'center',
+                    overflow: "hidden",
+                }}>
+                    <h3>{hostName}</h3>
+                    <p>{contactNumber}</p>
+                </div>
+
+                <ul style={{ listStyleType: 'none', padding: 0 }}>
+    <li><button onClick={() => navigate('/dp-registration')} style={{ color: '#fff' }}>DP Reg/Login</button></li>
+    
+    
+    {sessionStorage.getItem('dpInfo') && (
+        <li><button onClick={() => navigate('/dp-home')} style={{ color: '#fff' }}>DP Home</button></li>
+    )}
+    
+    <li><button onClick={() => navigate('/orders-posted')} style={{ color: '#fff' }}>Orders Posted</button></li>
+
+    <li><button onClick={logout} style={{ color: '#fff' }}>Logout</button></li>
+</ul>
+
             </div>
 
             <div className="content">
@@ -79,7 +106,7 @@ const HostHomePage = () => {
 
                     {/* Contact Number Field */}
                     <div className="form-group">
-                        <label htmlFor="contactNumber">Contact Number:</label>
+                        <label htmlFor="contactNumber">Email-id:</label>
                         <input 
                             type="tel" 
                             id="contactNumber" 
@@ -137,28 +164,29 @@ const HostHomePage = () => {
                     </div>
 
                     <div className="form-group">
-                        <label>Handle with Care:</label>
-                        <div>
+                       <label>Handle with Care:</label>
+                           <div className="radio-group">
                             <label>
-                                <input 
-                                    type="radio" 
-                                    value="yes" 
-                                    checked={handleWithCare === 'yes'} 
-                                    onChange={() => setHandleWithCare('yes')} 
-                                />
-                                Yes
-                            </label>
-                            <label>
-                                <input 
-                                    type="radio" 
-                                    value="no" 
-                                    checked={handleWithCare === 'no'} 
-                                    onChange={() => setHandleWithCare('no')} 
-                                />
-                                No
-                            </label>
-                        </div>
-                    </div>
+                                   <input 
+                                     type="radio" 
+                value="yes" 
+                checked={handleWithCare === 'yes'} 
+                onChange={() => setHandleWithCare('yes')} 
+            />
+                 Yes
+                    </label>
+                         <label>
+                               <input 
+                                   type="radio" 
+                                         value="no" 
+                                           checked={handleWithCare === 'no'} 
+                                       onChange={() => setHandleWithCare('no')} 
+             />
+                 No
+               </label>
+                </div>
+               </div>
+
 
                     <button type="submit">Submit Delivery</button>
                 </form>

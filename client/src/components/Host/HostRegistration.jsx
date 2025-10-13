@@ -64,7 +64,7 @@ const HostRegistration = () => {
             });
             alert(response.data.message);
             console.log('Registration successful', response.data);
-            if (response.data.message === "Registration successful") {
+            if (response.data.message === "Host registered successfully") {
                 navigate('/login'); // Redirect to login page after successful registration
             }
         } catch (error) {

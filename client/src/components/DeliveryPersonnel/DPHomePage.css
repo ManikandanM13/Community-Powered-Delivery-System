@@ -1,42 +1,51 @@
 .dp-homepage {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f7f7f7;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
 }
 
-.dp-homepage h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
+.sidebar {
+    width: 250px; /* Fixed width for the sidebar */
+    position: sticky; /* Make the sidebar sticky */
+    top: 0; /* Stick to the top */
+    height: 100vh; /* Full height */
+    overflow-y: auto; /* Allow scrolling */
 }
 
-.dp-homepage label {
-    display: block;
-    margin-bottom: 8px;
-    color: #555;
+.content {
+    flex: 1; /* Fill the remaining space */
+    padding: 20px; /* Space around content */
 }
 
-.dp-homepage input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+.form-group {
+    margin-bottom: 15px; /* Space between form fields */
 }
 
-.dp-homepage button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 450px; 
+    margin: auto;/* Stack form elements vertically */
 }
 
-.dp-homepage button:hover {
-    background-color: #0056b3;
+button {
+    margin-top: 10px; /* Space above the button */
+    padding: 10px; /* Padding for buttons */
+    background-color: #6d5f8e; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+}
+
+button:hover {
+    background-color: #a9a8f2; /* Change background color on hover */
+}
+
+h2{
+    margin-left: 400px ;
+    margin-bottom: 40px;
+    margin-top: 150px;
+}
+
+p{
+    margin-top: 50px;
 }

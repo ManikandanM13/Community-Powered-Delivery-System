@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Box, Button, Paper, TextField } from "@mui/material";
-import styles from "./authPageStyles.module.css"; // Reuse the same CSS for consistent styling
+import styles from "./authPageStyles.module.css"; 
 
 const DPLogin = () => {
   const [formData, setFormData] = useState({
     name: "",
-    password: "",
+    password: "", 
   });
 
   const [loginError, setLoginError] = useState("");
@@ -26,7 +26,7 @@ const DPLogin = () => {
   const handleSubmit = async () => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_SERVER_URL}/auth/login`,
+        `${import.meta.env.VITE_SERVER_URL}/auth/dplogin`, 
         formData,
         {
           withCredentials: true,
@@ -40,7 +40,7 @@ const DPLogin = () => {
         navigate("/dp-home");
       }
     } catch (e) {
-      setLoginError("Invalid name or password");
+      setLoginError("Invalid username or password");
       console.warn(e);
     }
   };
@@ -53,17 +53,18 @@ const DPLogin = () => {
   return (
     <Box className={styles.login_page_container}>
       <Paper elevation={6} className={styles.login_card}>
-        <h2>DP Login</h2>
+      <h2 style={{ marginLeft: '20px' }}>DP Login</h2>
+
 
         <Box className={styles.login_fields_box}>
-          <TextField
+          <TextField className="lf"
             name="name"
             value={formData.name}
             label="Username"
             onChange={handleChange}
             required
           />
-          <TextField
+          <TextField className="lf"
             name="password"
             value={formData.password}
             label="Password"

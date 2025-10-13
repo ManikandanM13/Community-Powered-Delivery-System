@@ -8,9 +8,34 @@
 
 .login_card {
     padding: 2rem;
+    max-width: 500px; /* To wrap the form content */
+    width: 100%;
+    text-align: center; /* Center the h2 and other content inside the card */
+}
+
+.login_fields_box {
+    display: flex;
+    flex-direction: column; /* Stack the form elements vertically */
+    align-items: center;
+    width: 100%; /* Make sure the container stretches to fit the inputs */
 }
 
 .login_fields_box * {
-    width: 100%;
-    margin-bottom: 15px
+    max-width: 170%;
+    margin-bottom: 15px;
+    margin: 5%;
+}
+
+.error {
+    color: red;
+    margin-bottom: 15px;
+}
+
+h2{
+    margin-left: 35%;
+    margin-top: 5%;
+}
+
+.lf{
+    width: 190%;
 }

@@ -4,7 +4,7 @@
 }
 
 .sidebar {
-    width: 250px;
+    width: 300px;
     background-color: #f8f9fa;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -48,6 +48,7 @@ h1 {
     display: flex;
     flex-direction: column;
     max-width: 400px;
+    margin: auto;
 }
 
 .form-group {
@@ -74,7 +75,7 @@ h1 {
 
 button[type="submit"] {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #6d5f8e;
     color: white;
     border: none;
     border-radius: 4px;
@@ -82,5 +83,58 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #6d5f8e;
+}
+
+.host-homepage {
+    display: flex;
+}
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh; /* Full height of the viewport */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds viewport height */
+    background-color: #3c3c3c; /* Sidebar background color */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto; /* Allow content to scroll */
+    max-height: 100vh; /* Limit content height */
+}
+
+.delivery-form {
+    /* Add any additional styles for the form here */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #6d5f8e; /* Button background color */
+    color: #fff; /* Button text color */
+    padding: 10px 15px; /* Button padding */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Round corners */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+button:hover {
+    background-color: #5b4a7f; /* Darken button on hover */
+}
+
+.radio-group {
+    display: flex;
+    align-items: center; /* Align items vertically centered */
+    gap: 20px; /* Space between radio buttons */
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center; /* Align radio button with label text */
 }

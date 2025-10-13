@@ -1,0 +1,82 @@
+/* Container for the entire registration page */
+.dp-registration-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full height of the viewport */
+    background-color: #f2f2f2; /* Light gray background */
+  }
+  
+  /* Main form container */
+  .dp-registration-form {
+    background-color: white; /* White background for the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 30px; /* Padding inside the form */
+    width: 400px; /* Fixed width for the form */
+  }
+  
+  /* Title of the form */
+  .dp-registration-form h2 {
+    text-align: center; 
+    margin-left: 10%;/* Center the title */
+    margin-bottom: 20px; /* Space below the title */
+    color: #333; /* Dark gray color for text */
+  }
+  
+  /* Grouping of form elements */
+  .form-group {
+    margin-bottom: 15px; /* Space between form fields */
+  }
+  
+  /* Styling for labels */
+  .form-group label {
+    display: block; /* Block display for labels */
+    margin-bottom: 5px; /* Space below labels */
+    font-weight: bold; /* Bold text for labels */
+  }
+  
+  /* Styling for input fields */
+  .form-group input[type="text"],
+  .form-group input[type="password"],
+  .form-group input[type="file"] {
+    width: 100%; /* Full width of the container */
+    padding: 10px; /* Padding inside input fields */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Slightly rounded corners */
+    box-sizing: border-box; /* Include padding and border in total width */
+    font-size: 14px; /* Font size for input */
+  }
+  
+  /* Styling for the submit button */
+  .submit-btn {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white; /* White text */
+    padding: 10px; /* Padding inside button */
+    border: none; /* No border */
+    border-radius: 4px; /* Slightly rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size for button */
+    width: 100%; /* Full width */
+  }
+  
+  /* Button hover effect */
+  .submit-btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+  
+  /* Styling for the link to login */
+  .dp-registration-form p {
+    text-align: center; /* Center the paragraph */
+    margin-top: 20px; /* Space above the paragraph */
+  }
+  
+  .dp-registration-form p a {
+    color: #007bff; /* Bootstrap primary color */
+    text-decoration: none; /* No underline for link */
+  }
+  
+  .dp-registration-form p a:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  

@@ -1,18 +1,19 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import cors from 'cors';
-import hostRoutes from './routes/authRoutes.js';
-import orderRoutes from './routes/orderRoutes.js'; // Import order routes
-import { Server } from 'socket.io';
-import { createServer } from 'http';
-import session from 'express-session';
-import morgan from 'morgan';
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import cors from "cors";
+import hostRoutes from "./routes/authRoutes.js";
+import orderRoutes from "./routes/orderRoutes.js"; // Import order routes
+import generateRoutes from "./routes/generateRoutes.js";
+import { Server } from "socket.io";
+import { createServer } from "http";
+import session from "express-session";
+import morgan from "morgan";
 
 dotenv.config();
 
 const app = express();
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 app.use(session({ secret: process.env.SESSION_SECRET }));
 const server = createServer(app);
 
@@ -42,9 +43,12 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
+app.use(express.static("public"));
+
 // Routes
 app.use("/auth", hostRoutes);
-app.use('/api/orders', orderRoutes); // Use order routes
+app.use("/api/orders", orderRoutes); // Use order routes
+app.use("/api/", generateRoutes);
 
 const PORT = process.env.PORT || 4000;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
